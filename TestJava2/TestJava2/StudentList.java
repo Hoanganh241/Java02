@@ -8,14 +8,14 @@ import java.util.ArrayList;
 
 public class StudentList {
     private String myStudent;
-    private AbstractList<Students> studentList;
+    private AbstractList<Student> studentList;
 
     public StudentList(String myStudent) {
         this.myStudent = myStudent;
-        this.studentList = new ArrayList<Students>();
+        this.studentList = new ArrayList<Student>();
     }
 
-    public boolean addNewStudent(Students student){
+    public boolean addNewStudent(Student student){
         if(findStudent(student.getStudentID())>=0){
             System.out.println("Student is already on file");
         }
@@ -23,14 +23,14 @@ public class StudentList {
         return true;
     }
 
-    private  int findStudent(Students student){
+    private  int findStudent(Student student){
         return this.studentList.indexOf(student);
     }
 
     private int findStudent(String studentID){
         for(int i =0; i < studentList.size(); i++) {
             // Creating another temporary object to hold the name and compare
-            Students student = this.studentList.get(i);
+            Student student = this.studentList.get(i);
             if(student.getStudentID().equals(studentID)) {
                 return i;
             }
@@ -72,7 +72,7 @@ public class StudentList {
         }
     }
 
-    public Students queryStudent(String studentID) {
+    public Student queryStudent(String studentID) {
         int position = findStudent(studentID);
         if(position >=0) {
             return this.studentList.get(position);
